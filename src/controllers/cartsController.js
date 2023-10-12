@@ -19,7 +19,7 @@ export const getCartById = async(id) => {
 }
 
 export const postCart = async (productsArray) => {
-    console.log(productsArray);
+    
     if (productsArray && !Array.isArray(productsArray)) {
         throw new Error("Invalid products array");
     }
@@ -34,6 +34,19 @@ export const postCart = async (productsArray) => {
             }
         }
     }
+
+    /* if (!Array.isArray(productsArray) || productsArray.length === 0) {
+        throw new Error("Invalid or empty products array");
+    }
+
+    for (const productData of productsArray) {
+        if (
+            typeof productData.product !== 'number' ||
+            typeof productData.quantity !== 'number'
+        ) {
+            throw new Error("Invalid data types in products array");
+        }
+    } */
 
     const carts = await getCarts();
 
